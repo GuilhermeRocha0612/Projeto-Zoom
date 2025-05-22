@@ -1,0 +1,182 @@
+/* =========================
+   Layout principal com Grid
+   ========================= */
+.container {
+    max-width: 1200px; /* Largura máxima do container */
+    margin: 0 auto;    /* Centraliza o container */
+    display: grid;     /* Usa CSS Grid para o layout */
+    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+    grid-template-areas: 
+        'cabecalho cabecalho' 
+        'capa-conteudo capa-imagem' 
+        'organizacao-imagem organizacao-conteudo'  
+    ;
+    row-gap: 20px;     /* Espaço entre linhas */
+    column-gap: 20px;  /* Espaço entre colunas */
+    padding: 10px;     /* Espaçamento interno */
+}
+
+/* =========================
+   Cabeçalho com Flexbox
+   ========================= */
+header {
+    grid-area: cabecalho; /* Área do grid */
+    display: flex;        /* Flexbox para alinhar itens */
+    align-items: center;  /* Alinha verticalmente */
+    padding: 0 10px;      /* Espaçamento lateral */
+}
+
+/* =========================
+   Seção da capa (conteúdo)
+   ========================= */
+section#capa-conteudo {
+    grid-area: capa-conteudo;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+}
+
+/* =========================
+   Seção da capa (imagem)
+   ========================= */
+section#capa-imagem {
+    grid-area: capa-imagem;
+}
+
+/* =========================
+   Imagens responsivas
+   ========================= */
+section#capa-imagem > img, section#organizacao-imagem > img {
+    max-width: 100%; /* Imagem nunca ultrapassa o container */
+    height: auto;    /* Mantém proporção */
+}
+
+/* =========================
+   Seção organização (imagem)
+   ========================= */
+section#organizacao-imagem {
+    grid-area: organizacao-imagem;
+}
+
+/* =========================
+   Seção organização (conteúdo)
+   ========================= */
+section#organizacao-conteudo {
+    grid-area: organizacao-conteudo;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* =========================
+   Rodapé
+   ========================= */
+footer {
+    background-color: #f2f2f2;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* =========================
+   Navegação
+   ========================= */
+nav {
+    flex-grow: 1; /* Ocupa espaço disponível no header */
+}
+
+nav ul {
+    display: flex;    /* Menu horizontal */
+    list-style: none; /* Remove marcadores */
+}
+
+ul a:link, a:visited {
+    padding: 10px;
+    text-decoration: none;
+    color: #484848;
+    font-size: 1.2rem;
+}
+
+ul a:hover {
+    color: #0B5CFF;
+}
+
+/* =========================
+   Botões
+   ========================= */
+.botao {
+    text-decoration: none;
+    color: #0B5CFF;
+    border-radius: 25px;
+    padding: 5px 30px;
+    align-self: flex-start;
+}
+
+.botao:hover {
+    background-color: #dae1f1;
+}
+
+.botao.destaque {
+   background-color: #0B5CFF;
+   color: white;
+}
+
+botao.destaque:hover {
+    background-color: #3876f2;
+    color: white;
+}
+
+/* =========================
+   Tipografia
+   ========================= */
+body {
+    margin: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+.texto-destaque {
+    color: #2d73ff;
+}
+
+/* =========================
+   Responsividade
+   ========================= */
+@media (max-width: 768px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+            'cabecalho' 
+            'capa-conteudo'
+            'capa-imagem' 
+            'organizacao-conteudo'
+            'organizacao-imagem'  
+        ;
+        row-gap: 20px;
+        column-gap: 20px;
+    }
+    header {
+        margin-top: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+}
